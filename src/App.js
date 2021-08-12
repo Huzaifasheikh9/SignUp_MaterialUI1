@@ -5,6 +5,8 @@ import { useState } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 function App() {
+
+  // these are the hooks which I have in App so that they can be used locally
   const [data, setData] = useState({
     userName: "",
     Email: "",
