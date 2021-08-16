@@ -24,6 +24,8 @@ import TableRow from "@material-ui/core/TableRow";
 import AccountBoxIcon from "@material-ui/icons/AccountBox";
 import { useState } from "react";
 
+
+
 // useEffect is a function which runs before and after the render of that componenet
 // useState is a ibuilt react hook that allows us to create a state component and a function the set functionality for that state
 
@@ -36,16 +38,19 @@ const Signup = ({data, setData, myRows, setMyRows}) => {
 
   // Material table end
 
-  const [error, setError] = useState(false);
-  const [Eerror, seteError] = useState(false);
-  const [Perror, setPError] = useState(false);
-  const [REerror, setREerror] = useState(false);
+ 
+
+  const [error, setError] = useState(true);
+  const [Eerror, seteError] = useState(true);
+  const [Perror, setPError] = useState(true);
+  const [REerror, setREerror] = useState(true);
 
   //this is the hook to change the data in the specific handle changer the data we change will be changed and the rest will be the same as default
 
-
+ 
 
   const handleChange = (e) => {
+    
     // // To get the value and name in console log
     // console.log(e);
     // console.log(e.target.value);
@@ -102,7 +107,7 @@ const Signup = ({data, setData, myRows, setMyRows}) => {
 
     var validPRegex =
       /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,10}$/;
-    if (data.Password.match(validPRegex)) {
+    if (data.Password.match(validPRegex) || data.Password.length !== 0) {
       setPError(false);
     } else {
       setPError(true);
@@ -114,9 +119,16 @@ const Signup = ({data, setData, myRows, setMyRows}) => {
       setREerror(true);
     }
 
-    if (!error && !Eerror && !Perror && !REerror) {
+    
+
+    if ((!error) && (!Eerror ) && (!Perror) && (!REerror)) {
+    
       setMyRows([...myRows, data]);
-      console.log(myRows);
+      console.log("errorFalse", myRows);
+    }
+    else{
+    
+      console.log("errorTrue", myRows);
     }
   };
 
@@ -140,6 +152,7 @@ const Signup = ({data, setData, myRows, setMyRows}) => {
         style={{
           border: "1px solid gray",
           height: "auto",
+          borderRadius: "5px"
         }}
       >
         <Grid item xs={12}>
@@ -245,9 +258,7 @@ const Signup = ({data, setData, myRows, setMyRows}) => {
           <Button
             variant="contained"
             size="medium"
-            onClick={() => {
-              handleSignUp();
-            }}
+            onClick={() => handleSignUp()}
           >
             Sign Up
           </Button>

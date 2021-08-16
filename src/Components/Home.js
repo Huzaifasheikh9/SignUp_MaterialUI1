@@ -65,8 +65,8 @@ const Home = ({data, setData, myRows, setMyRows}) => {
 
 
   return (
-    <div>
-      <TableContainer style={{ margin: "100px" }} component={Paper}>
+    <div style={{width: "100%"}}>
+      <TableContainer style={{ width: '100%' }} component={Paper}>
         <Table className={classes.table} aria-label="simple table">
           <TableHead style={{ backgroundColor: "darkGray" }}>
             <TableRow>
@@ -86,7 +86,7 @@ const Home = ({data, setData, myRows, setMyRows}) => {
                     style={{ border: "1px solid black" }}
                     component="th"
                     scope="row"
-                  >
+                  > 
                     {row.userName}
                   </TableCell>
                   <TableCell
@@ -98,7 +98,7 @@ const Home = ({data, setData, myRows, setMyRows}) => {
                   <TableCell
                     align="center"
                     style={{ border: "1px solid black" }}
-                  >
+                  >Y
                     {row.Password}
                   </TableCell>
                   <TableCell
