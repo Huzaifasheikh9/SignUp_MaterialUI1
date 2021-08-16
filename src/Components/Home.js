@@ -65,7 +65,7 @@ const Home = ({data, setData, myRows, setMyRows}) => {
 
 
   return (
-    <div style={{width: "100%"}}>
+    <div style={{width: "100%", height: "100vh" ,marginTop: "70px", backgroundColor: "lightGrey"}}>
       <TableContainer style={{ width: '100%' }} component={Paper}>
         <Table className={classes.table} aria-label="simple table">
           <TableHead style={{ backgroundColor: "darkGray" }}>
