@@ -98,7 +98,7 @@ const Home = ({data, setData, myRows, setMyRows}) => {
                   <TableCell
                     align="center"
                     style={{ border: "1px solid black" }}
-                  >Y
+                  >
                     {row.Password}
                   </TableCell>
                   <TableCell
