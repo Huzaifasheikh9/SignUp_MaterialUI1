@@ -20,7 +20,7 @@ const Home = ({ data, setData, myRows, setMyRows }) => {
   const [name, setName] = useState("");
   // const [filteredRow, setFilteredRow] = useState({});
   const [localData, setLocalData] = useState([data]);
-
+//a
 
   const searchHandle = (e) => {
     const searchValue = e.target.value;
