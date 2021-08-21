@@ -1,9 +1,8 @@
-import NewSignup from "./Components/NewSignup";
 import "./App.css";
 import Signup from "./Components/Signup";
 import Home from "./Components/Home";
 import { useState } from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";

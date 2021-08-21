@@ -1,8 +1,5 @@
 import "./Signup.css";
 import * as React from "react";
-import Edit from "../Media/Edit.png";
-import Update from "../Media/Update.png";
-import Delete from "../Media/Delete.png";
 
 import {
   Grid,
@@ -10,47 +7,23 @@ import {
   InputAdornment,
   Typography,
   Button,
-  Paper,
 } from "@material-ui/core";
-
-import { makeStyles } from "@material-ui/core/styles";
-import Table from "@material-ui/core/Table";
-import TableBody from "@material-ui/core/TableBody";
-import TableCell from "@material-ui/core/TableCell";
-import TableContainer from "@material-ui/core/TableContainer";
-import TableHead from "@material-ui/core/TableHead";
-import TableRow from "@material-ui/core/TableRow";
 
 import AccountBoxIcon from "@material-ui/icons/AccountBox";
 import { useState } from "react";
 
-
-
 // useEffect is a function which runs before and after the render of that componenet
 // useState is a ibuilt react hook that allows us to create a state component and a function the set functionality for that state
 
-const Signup = ({data, setData, myRows, setMyRows}) => {
-  // Material table start
-
-
-
-  
-
-  // Material table end
-
- 
-
-  const [error, setError] = useState(true);
-  const [Eerror, seteError] = useState(true);
-  const [Perror, setPError] = useState(true);
-  const [REerror, setREerror] = useState(true);
+const Signup = ({ data, setData, myRows, setMyRows }) => {
+  const [error, setError] = useState(false);
+  const [Eerror, seteError] = useState(false);
+  const [Perror, setPError] = useState(false);
+  const [REerror, setREerror] = useState(false);
 
   //this is the hook to change the data in the specific handle changer the data we change will be changed and the rest will be the same as default
 
- 
-
   const handleChange = (e) => {
-    
     // // To get the value and name in console log
     // console.log(e);
     // console.log(e.target.value);
@@ -90,11 +63,12 @@ const Signup = ({data, setData, myRows, setMyRows}) => {
     // this is to recheck the password that i entered above
   };
 
-  const handleSignUp = () => {
+  const validate = () => {
     if (data.userName === "Huzaifa" || data.userName === "HUZAIFA") {
       setError(false);
-    } else {
+    } else { 
       setError(true);
+      return true;
     }
 
     var validRegex =
@@ -103,6 +77,7 @@ const Signup = ({data, setData, myRows, setMyRows}) => {
       seteError(false);
     } else {
       seteError(true);
+      return true;
     }
 
     var validPRegex =
@@ -111,29 +86,32 @@ const Signup = ({data, setData, myRows, setMyRows}) => {
       setPError(false);
     } else {
       setPError(true);
+      return true;
     }
 
     if (data.RePass === data.Password) {
       setREerror(false);
     } else {
       setREerror(true);
-    }
-
-    
-
-    if ((!error) && (!Eerror ) && (!Perror) && (!REerror)) {
-    
-      setMyRows([...myRows, data]);
-      console.log("errorFalse", myRows);
-    }
-    else{
-    
-      console.log("errorTrue", myRows);
+      return true;
     }
   };
 
-  // editBtn
+  const handleSignUp = () => {
+    // console.log({ error });
+    // This will check if all the values in the validate function are returned to us as false only then this function will run
+    if (!validate()) {
+      setMyRows([...myRows, data]);
+      // console.log("errorFalse", myRows);
+    } else {
+      // console.log("errorTrue", myRows);
+      setMyRows([...myRows]);
+
+    }
+  };
+
  
+
   return (
     <Grid
       container
@@ -152,7 +130,7 @@ const Signup = ({data, setData, myRows, setMyRows}) => {
         style={{
           border: "1px solid gray",
           height: "auto",
-          borderRadius: "5px"
+          borderRadius: "5px",
         }}
       >
         <Grid item xs={12}>
@@ -246,7 +224,7 @@ const Signup = ({data, setData, myRows, setMyRows}) => {
         </Grid>
         {/* //THis is the way we can align the items in the div centered */}
         <Grid
-        // This grid contains the main content
+          // This grid contains the main content
           item
           xs={4}
           direction="column"
@@ -266,7 +244,6 @@ const Signup = ({data, setData, myRows, setMyRows}) => {
       </Grid>
 
       {/* Table Grid */}
-    
     </Grid>
   );
 };
